@@ -1,0 +1,40 @@
+sources:
+  - name: landing
+    database: SLEEKMART_OMS
+    schema: L1_LANDING
+    tables:
+      - name: customers
+        identifier: customers
+        config:
+          freshness: 
+            warn_after: 
+              count: 10
+              period: day
+            error_after: 
+              count: 10
+              period: day
+          loaded_at_field: updated_at   
+            
+            
+
+      - name: orders
+        identifier: ORDERS
+
+      - name: orderitems
+        identifier: ORDERITEMS
+
+      - name: products
+        identifier: PRODUCTS
+        columns:
+          - name: PRODUCTID
+            tests:
+              - unique
+              - not_null
+
+      - name: employees
+        identifier: EMPLOYEES
+        columns:
+          - name: EMAIL
+            data_tests:
+              - string_not_null_check   
+

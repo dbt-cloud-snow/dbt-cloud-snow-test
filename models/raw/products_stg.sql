@@ -1,0 +1,10 @@
+SELECT 
+PRODUCTID, 
+NAME, 
+CATEGORY, 
+RETAILPRICE, 
+SUPPLIERPRICE, 
+SUPPLIERID, 
+UPDATED_AT
+FROM 
+{{ source('landing','products') }}

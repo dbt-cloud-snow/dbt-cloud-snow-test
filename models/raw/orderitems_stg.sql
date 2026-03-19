@@ -1,0 +1,10 @@
+SELECT 
+ORDERID, 
+ORDERITEMID, 
+PRODUCTID, 
+QUANTITY, 
+UNITPRICE, 
+UPDATED_AT,
+QUANTITY * QUANTITY as SALES_PRICE
+from
+{{ source('landing','orderitems') }}
