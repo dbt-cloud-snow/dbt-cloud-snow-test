@@ -1,0 +1,9 @@
+snapshots:
+  - name: scd2_customer_dim
+    relation: source('landing','customers')
+    config:
+      schema: L3_CONSUMPTION
+      unique_key: CUSTOMERID
+      strategy: timestamp
+      updated_at: updated_at
+      invalidate_hard_deletes: true
