@@ -19,6 +19,16 @@ sources:
 
       - name: orders
         identifier: ORDERS
+        columns:
+          - name: CUSTOMERID
+            tests:
+              - relationships:
+                  arguments: 
+                    to: ref('customer_stg')
+                    field: customerid
+                  config:
+                    where: "UPDATED_AT > '2022-07-03 01:18:51.000'"   
+            
 
       - name: orderitems
         identifier: ORDERITEMS
@@ -36,5 +46,10 @@ sources:
         columns:
           - name: EMAIL
             data_tests:
-              - string_not_null_check   
+              - string_not_null_check
+
+      - name: stores
+        identifier: STORES
+      - name: suppliers
+        identifier: SUPPLIERS            
 
