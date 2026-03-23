@@ -1,14 +1,13 @@
-SELECT 
-CUSTOMERID, 
-FIRSTNAME, 
-{{ upper_column_name('LASTNAME')}} as LASTNAME, 
-EMAIL, 
-PHONE, 
-ADDRESS, 
-CITY, 
-STATE, 
-ZIPCODE, 
-UPDATED_AT,
-concat(FIRSTNAME,' ',LASTNAME) as CUSTOMER_NAME 
-FROM 
-{{source('landing','customers')}}
+select
+    customerid,
+    firstname,
+    {{ upper_column_name("LASTNAME") }} as lastname,
+    email,
+    phone,
+    address,
+    city,
+    state,
+    zipcode,
+    updated_at,
+    concat(firstname, ' ', lastname) as customer_name
+from {{ source("landing", "customers") }}

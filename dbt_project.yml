@@ -37,6 +37,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   my_new_project:
+    +pre-hook: "INSERT INTO DBT_AUDIT_LOG(MODEL_NAME, JOB_START_AT) values( '{{this}}', current_timestamp)"
+    +post-hook: " update DBT_AUDIT_LOG set JOB_END_AT = current_timestamp where SEQID= (select max(SEQID) from DBT_AUDIT_LOG where MODEL_NAME= '{{this}}' ) "
+    
     # Applies to all files under models/example/
     example:
       +materialized: table
